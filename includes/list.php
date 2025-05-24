@@ -37,7 +37,6 @@ try {
                 break;
             }
             
-            // Verify list belongs to user
             $stmt = $pdo->prepare("SELECT id FROM lists WHERE id = ? AND user_id = ?");
             $stmt->execute([$list_id, $user_id]);
             
@@ -55,7 +54,6 @@ try {
         case 'delete':
             $list_id = (int)$_POST['list_id'];
             
-            // Verify list belongs to user
             $stmt = $pdo->prepare("SELECT id FROM lists WHERE id = ? AND user_id = ?");
             $stmt->execute([$list_id, $user_id]);
             
@@ -64,11 +62,9 @@ try {
                 break;
             }
             
-            // Delete tasks first (foreign key constraint)
             $stmt = $pdo->prepare("DELETE FROM tasks WHERE list_id = ?");
             $stmt->execute([$list_id]);
             
-            // Then delete the list
             $stmt = $pdo->prepare("DELETE FROM lists WHERE id = ?");
             $stmt->execute([$list_id]);
             
