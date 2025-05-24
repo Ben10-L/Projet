@@ -1,6 +1,6 @@
 # RemindMe - Task Management Application
 
-RemindMe is a modern, iOS-style task management application that helps you organize your tasks and lists efficiently. Built with PHP, MySQL, and modern CSS, it provides a clean and intuitive user interface for managing your daily tasks.
+RemindMe is a lightweight and elegant task management application inspired by iOS design principles. Built using PHP, MySQL, and modern CSS, it delivers a clean, responsive, and user-friendly interface for managing tasks efficiently.
 
 ## Features
 
@@ -43,7 +43,8 @@ RemindMe is a modern, iOS-style task management application that helps you organ
 
 1. **Clone the Repository**
    ```bash
-   git clone [repository-url]
+   git clone https://github.com/Ben10-L/remindme.git
+
    cd remindme
    ```
 
@@ -61,8 +62,8 @@ RemindMe is a modern, iOS-style task management application that helps you organ
      ```php
      $host = 'localhost';
      $dbname = 'remindme';
-     $username = 'your_username';
-     $password = 'your_password';
+     $username = 'root';
+     $password = '';
      ```
 
 4. **Web Server Setup**
@@ -142,4 +143,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Support
 
-For support, please open an issue in the repository or contact the maintainers. 
+Need help? Feel free to open an issue, and we’ll be happy to assist.
