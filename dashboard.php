@@ -11,16 +11,13 @@ if (!isLoggedIn()) {
 $user_id = $_SESSION['user_id'];
 $username = $_SESSION['username'];
 
-// Get view type (today, all, or specific list)
 $view = $_GET['view'] ?? 'all';
 $current_list_id = isset($_GET['list_id']) ? (int)$_GET['list_id'] : 0;
 
-// Get all lists for the user
 $stmt = $pdo->prepare("SELECT * FROM lists WHERE user_id = ? ORDER BY created_at DESC");
 $stmt->execute([$user_id]);
 $lists = $stmt->fetchAll();
 
-// Get tasks based on view type
 $tasks = [];
 $current_list_title = '';
 
@@ -54,7 +51,6 @@ switch ($view) {
 
     default:
         if ($current_list_id) {
-            // Get current list title
             foreach ($lists as $list) {
                 if ($list['id'] == $current_list_id) {
                     $current_list_title = $list['title'];
@@ -79,7 +75,6 @@ switch ($view) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RemindMe - Dashboard</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
