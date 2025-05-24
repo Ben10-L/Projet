@@ -24,7 +24,6 @@ try {
                 break;
             }
             
-            // Verify list belongs to user
             $stmt = $pdo->prepare("SELECT id FROM lists WHERE id = ? AND user_id = ?");
             $stmt->execute([$list_id, $user_id]);
             
@@ -49,7 +48,6 @@ try {
                 break;
             }
             
-            // Verify task belongs to user
             $stmt = $pdo->prepare("SELECT t.id FROM tasks t JOIN lists l ON t.list_id = l.id WHERE t.id = ? AND l.user_id = ?");
             $stmt->execute([$task_id, $user_id]);
             
@@ -68,7 +66,6 @@ try {
             $task_id = (int)$_POST['task_id'];
             $status = $_POST['status'] === 'completed' ? 'completed' : 'pending';
             
-            // Verify task belongs to user
             $stmt = $pdo->prepare("SELECT t.id FROM tasks t JOIN lists l ON t.list_id = l.id WHERE t.id = ? AND l.user_id = ?");
             $stmt->execute([$task_id, $user_id]);
             
@@ -86,7 +83,6 @@ try {
         case 'delete':
             $task_id = (int)$_POST['task_id'];
             
-            // Verify task belongs to user
             $stmt = $pdo->prepare("SELECT t.id FROM tasks t JOIN lists l ON t.list_id = l.id WHERE t.id = ? AND l.user_id = ?");
             $stmt->execute([$task_id, $user_id]);
             
